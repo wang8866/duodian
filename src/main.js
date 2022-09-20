@@ -22,7 +22,7 @@ Vue.use(VueAwesomeSwiper)
 Vue.component('TabBar', TabBar)
 Vue.component('ProductList', ProductList)
 Vue.component('TagsList', TagsList)
-
+console.log(123)
 new Vue({
   router,
   store,
