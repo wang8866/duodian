@@ -29,8 +29,8 @@ export default {
   },
   methods: {
     subMenuData () {
-      this.$api.category.list().then(res => {
-        this.menu = res.data.data.kind
+      this.$api.product.category().then(res => {
+        this.menu = res.data.data
         console.log(res)
       })
     }
