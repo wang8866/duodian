@@ -54,6 +54,7 @@ export default {
       const res = await this.$api.product.detail(id)
       this.detailIndfo = res.data
       console.log(res)
+      console.log(res)
     }
   }
 }
