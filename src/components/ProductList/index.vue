@@ -1,8 +1,10 @@
 <template>
   <div class="product-list">
-    <dl
+    <router-link
       v-for="(item,index) in list"
       :key="index"
+      tag="dl"
+      :to="`/detail/${item.id}`"
     >
       <dt>
         <img :src="item.img" alt="">
@@ -23,7 +25,7 @@
           </div>
         </footer>
       </dd>
-    </dl>
+    </router-link>
   </div>
 </template>
 

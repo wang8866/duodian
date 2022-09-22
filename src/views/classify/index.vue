@@ -85,6 +85,7 @@ export default {
     rightNavChange (index, item) {
       this.fetchProductParams.category_id = item.categoryId
       this.fetchProductParams.page = 1
+      window.scrollTo(0, 0)
     }
   }
 }

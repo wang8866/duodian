@@ -1,11 +1,14 @@
 <template>
-  <swiper :options="swiperOption" :not-next-tick="notNextTick" v-if="list.length">
+  <swiper
+    :options="swiperOption"
+    :not-next-tick="notNextTick"
+  >
     <!-- slides -->
     <swiper-slide
     v-for="(item, index) in list"
     :key="index"
     >
-    <img :src="item.images" />
+    <img :src="item" />
     </swiper-slide>
     <!-- Optional controls -->
     <div class="swiper-pagination" slot="pagination"></div>

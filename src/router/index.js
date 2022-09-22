@@ -28,6 +28,10 @@ const router = new VueRouter({
           component: () => import('@/views/mine')
         }
       ]
+    },
+    {
+      path: '/detail/:id',
+      component: () => import('@/views/detail')
     }
   ]
 })
