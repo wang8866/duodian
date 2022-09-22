@@ -61,7 +61,7 @@ export default {
       this.leftMenu = res.data
       this.rightMenu = [{
         categoryId: res.data[0].categoryId,
-        categoryName: '全部'
+        categoryName: '全部分类'
       }].concat(res.data[0].children)
       console.log(res)
     },
@@ -78,8 +78,9 @@ export default {
       this.fetchProductParams.page = 1
       this.rightMenu = [{
         categoryId: item.categoryId,
-        categoryName: '全部'
+        categoryName: '全部分类'
       }].concat(item.children)
+      window.scrollTo(0, 0)
     },
     rightNavChange (index, item) {
       this.fetchProductParams.category_id = item.categoryId
@@ -101,10 +102,13 @@ export default {
       flex-shrink: 0;
       position: fixed;
       top: 98px;
+      &::-webkit-scrollbar {
+        display: none;
+      }
       ::v-deep nav {
         padding: 0;
         @include border-1px(bottom, transparent);
-        background: #fafafa;
+        background: #f6f6f6;
         a {
           color: #999999;
           font-size: 24px;
@@ -114,9 +118,14 @@ export default {
           height: 100px;
           line-height: 100px;
           text-align: center;
+          border-left: 8px solid transparent;
+          box-sizing: border-box;
           &.active {
             background: #fff;
-            color: #333;
+            font-size: 28px;
+            font-weight: bold;
+            color: #FE3113;
+            border-left: 8px solid #FE3113;
           }
         }
       }
@@ -128,40 +137,42 @@ export default {
       flex: 1;
       position: relative;
       .right-menu {
-        height: 55px;
-        line-height: 55px;
+        height: 95px;
+        line-height: 95px;
         flex-shrink: 0;
         position: fixed;
         top: 98px;
         right: 0;
         left: 178px;
         z-index: 100;
-        overflow: auto;
-        width: auto;
+        border-bottom: 1px solid #E9E9E9;
         ::v-deep nav {
           @include flex(row, flex-start, flex-start);
-          @include border-1px(bottom, #e9e9e9);
-          height: 55px;
-          line-height: 55px;
-          padding: 0;
+          @include border-1px(bottom, transparent);
+          height: 95px;
+          line-height: 95px;
+          padding: 20px 0;
+          overflow: scroll;
+          &::-webkit-scrollbar {
+          display: none;
+        }
           a {
-            color: #999999;
+            color: #999;
             font-size: 24px;
             display: block;
             line-height: 55px;
             padding: 0 20px;
-            &:first-child {
-              padding-left: 0;
-            }
+            border-radius: 55px;
             &.active {
-              color: #333;
+              color: #fff;
+              background: linear-gradient(251deg, #FE3113 0%, #FD7A00 100%);
             }
           }
         }
       }
       .product-list {
         overflow: auto;
-        padding-top: 50px;
+        padding-top: 95px;
         ::v-deep dl {
           dt {
             @include wh(186px, 186px);
@@ -175,8 +186,9 @@ export default {
             overflow: hidden;
             h3 {
               @include ellipsis(1);
-              font-size: 28px;
               width: 100%;
+              display: block;
+              font-size: 28px;
             }
             p {
               font-size: 18px;
