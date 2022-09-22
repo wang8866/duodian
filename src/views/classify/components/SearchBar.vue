@@ -19,6 +19,12 @@ export default {
     padding: 17px 30px;
     background: #fff;
     box-sizing: border-box;
+    @include border-1px(bottom, #EDEDED);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
     i {
       width: 10%;
       line-height: 64px;

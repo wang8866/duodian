@@ -1,24 +1,42 @@
 <template>
-  <nav>
-    <a
-      href="javascript:;"
-      v-for="(item, index) in tabs"
-      :key="index"
-      :class="{
-        active: activeIndex === index
-        }"
-      @click="change(index)"
-    >
-    {{item.text}}
-    </a>
-  </nav>
+  <div
+    class="tab-bar" :class="{
+      [layout]: true
+    }">
+    <nav>
+      <a
+        href="javascript:;"
+        v-for="(item, index) in tabs"
+        :key="index"
+        :class="{
+          active: activeIndex === index
+          }"
+        @click="change(index)"
+      >
+      {{item[tabName]}}
+      </a>
+    </nav>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'TabBar',
   props: {
-    tabs: Array
+    tabs: Array,
+    tabName: {
+      type: String,
+      default: 'text'
+    },
+    layout: {
+      type: String,
+      default: 'row'
+    }
+  },
+  watch: {
+    tabs () {
+      this.activeIndex = 0
+    }
   },
   data () {
     return {
@@ -35,6 +53,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.tab-bar {
   nav {
     @include wh (100%, 92px);
     @include flex (row, center, space-between);
@@ -54,4 +73,12 @@ export default {
       }
     }
   }
+  &.column {
+    @include wh(172px, 100%);
+    nav {
+      @include wh(100%, auto);
+      @include flex(column);
+    }
+  }
+}
 </style>

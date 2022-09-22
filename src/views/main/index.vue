@@ -55,7 +55,7 @@ export default {
 <style lang="scss" scoped>
 .page {
   min-height: 100vh;
-  background: #f6f6f6;
+  // background: #f6f6f6;
   margin-bottom: 100px;
   .foot-nav {
     position: fixed;

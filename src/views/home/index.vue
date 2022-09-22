@@ -35,7 +35,7 @@ export default {
       fechProductParams: {
         page: 1,
         page_size: 10,
-        classId: 1
+        category_id: 1
       },
       flag: ''
     }
@@ -56,9 +56,9 @@ export default {
   methods: {
     initHomeData () {
       this.$api.home.base().then(res => {
-        this.banner = res.data.data.banner
-        this.mall_nav = res.data.data.mall_nav
-        this.hot_nav = res.data.data.hot_nav
+        this.banner = res.data.banner
+        this.mall_nav = res.data.mall_nav
+        this.hot_nav = res.data.hot_nav
         console.log(res)
       })
     },
@@ -66,15 +66,15 @@ export default {
       // this.flag = true
       const res = await this.$api.product.list(this.fechProductParams)
       if (this.fechProductParams.page === 1) {
-        this.products = res.data.data
+        this.products = res.data
       } else {
-        this.products = this.products.concat(res.data.data)
+        this.products = this.products.concat(res.data)
       }
       // this.flag = false
     },
     navchange (index, item) {
       console.log(index, item)
-      this.fechProductParams.classId = item.id
+      this.fechProductParams.category_id = item.id
       this.fechProductParams.page = 1
       const Top = this.$refs.content.offsetTop
       const scrollTop = document.querySelector('html').scrollTop
