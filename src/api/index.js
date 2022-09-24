@@ -7,7 +7,8 @@ const api = {
   product: {
     list: (parmas) => axios.get('/product', parmas),
     category: () => axios.get('/product/category'),
-    detail: id => axios.get(`/product/${id}`)
+    detail: id => axios.get(`/product/${id}`),
+    search: parmas => axios.get('/search/tip', parmas)
   }
 }
 

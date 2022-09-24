@@ -40,6 +40,9 @@ export default {
       flag: ''
     }
   },
+  scrollBottom () {
+    this.fechProductParams.page += 1
+  },
   watch: {
     fechProductParams: {
       handler: 'fechProductList',
@@ -49,9 +52,6 @@ export default {
   },
   created () {
     this.initHomeData()
-  },
-  scrollBottom () {
-    this.fechProductParams.page += 1
   },
   methods: {
     initHomeData () {
@@ -63,14 +63,12 @@ export default {
       })
     },
     async fechProductList () {
-      // this.flag = true
       const res = await this.$api.product.list(this.fechProductParams)
       if (this.fechProductParams.page === 1) {
         this.products = res.data
       } else {
         this.products = this.products.concat(res.data)
       }
-      // this.flag = false
     },
     navchange (index, item) {
       console.log(index, item)

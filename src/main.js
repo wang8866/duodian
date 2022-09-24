@@ -15,6 +15,7 @@ import TabBar from '@/components/TabBar'
 import ProductList from '@/components/ProductList'
 import TagsList from '@/components/TagsList'
 import CardList from '@/components/CardList'
+import SearchFor from '@/components/SearchFor'
 
 Vue.config.productionTip = false
 Vue.use(api)
@@ -24,6 +25,7 @@ Vue.component('TabBar', TabBar)
 Vue.component('ProductList', ProductList)
 Vue.component('TagsList', TagsList)
 Vue.component('CardList', CardList)
+Vue.component('SearchFor', SearchFor)
 
 new Vue({
   router,

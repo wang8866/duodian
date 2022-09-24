@@ -25,7 +25,7 @@
 <script>
 import scroll from '@/mixins/scroll'
 import SearchBar from './components/SearchBar.vue'
-// import SubMenu from './components/SubMenu.vue'
+
 export default {
   components: { SearchBar },
   name: 'classify-index',

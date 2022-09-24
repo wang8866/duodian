@@ -2,12 +2,15 @@
   <header class="header-bar">
     <a href="javascript:;">
       <i class="iconfont icon-dizhiguanli"></i>
-      <output>送至：北京八维研修学院</output>
+      <output>送至：赛格国际购物中心</output>
       <i class="iconfont icon-jiantouyou"></i>
     </a>
-    <a href="javascript:;">
+    <router-link
+      to="/search"
+      href="javascript:;"
+    >
       <i class="iconfont icon-sousuo"></i>
-    </a>
+    </router-link>
   </header>
 </template>
 

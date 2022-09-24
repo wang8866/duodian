@@ -1,8 +1,8 @@
 <template>
-  <div class="search-bar">
+  <router-link to="/search" tag="div" class="search-bar">
     <i class="iconfont icon-sousuo"></i>
     <input type="text" placeholder="搜索校园超市商品">
-  </div>
+  </router-link>
 </template>
 
 <script>
