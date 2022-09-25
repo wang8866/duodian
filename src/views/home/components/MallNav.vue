@@ -1,5 +1,6 @@
 <template>
-  <swiper :options="swiperOption" :not-next-tick="notNextTick">
+  <div class="box">
+    <swiper :options="swiperOption">
     <!-- slides -->
     <swiper-slide
       v-for="(item, index) in Math.ceil(nav.length / 10)"
@@ -16,7 +17,10 @@
         </a>
       </div>
     </swiper-slide>
-  </swiper>
+    <!-- Optional controls -->
+    <div class="swiper-pagination" slot="pagination"></div>
+    </swiper>
+  </div>
 </template>
 
 <script>
@@ -27,12 +31,12 @@ export default {
   },
   data () {
     return {
-      notNextTick: true,
       swiperOption: {
-        // loop: true,
-        autoHeight: true,
-        pagination: '.swiper-pagination',
-        paginationClickable: true
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        }
       }
     }
   }
@@ -40,6 +44,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.box .swiper-container-horizontal > .swiper-pagination-bullets {
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+}
+.box {
+  .swiper-container {
+    height: 400px;
+    ::v-deep .swiper-pagination-bullet {
+      width: 16px;
+      height: 16px;
+    }
+    ::v-deep .swiper-pagination-bullet-active {
+      background: $color-primary;
+    }
+  }
+}
 .mall-nav {
   display: grid;
   grid-template-columns: repeat(5, 20%);

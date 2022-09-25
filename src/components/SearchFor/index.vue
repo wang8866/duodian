@@ -4,7 +4,7 @@
       <i class="iconfont icon-sousuo"></i>
       <input
         type="text"
-        v-model="val"
+        v-debounce="val"
         v-bind="$attrs"
         @keydown.enter="search(val)"
       />

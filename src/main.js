@@ -17,6 +17,9 @@ import TagsList from '@/components/TagsList'
 import CardList from '@/components/CardList'
 import SearchFor from '@/components/SearchFor'
 
+import debounce from './directives/debounce'
+import throttle from './directives/throttle'
+
 Vue.config.productionTip = false
 Vue.use(api)
 Vue.use(VueAwesomeSwiper)
@@ -26,6 +29,9 @@ Vue.component('ProductList', ProductList)
 Vue.component('TagsList', TagsList)
 Vue.component('CardList', CardList)
 Vue.component('SearchFor', SearchFor)
+
+Vue.directive('debounce', debounce)
+Vue.directive('throttle', throttle)
 
 new Vue({
   router,

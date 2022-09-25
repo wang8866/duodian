@@ -1,7 +1,6 @@
 <template>
   <swiper
     :options="swiperOption"
-    :not-next-tick="notNextTick"
   >
     <!-- slides -->
     <swiper-slide
@@ -23,13 +22,17 @@ export default {
   },
   data () {
     return {
-      notNextTick: true,
       swiperOption: {
         loop: true,
-        autoplay: 3000,
-        autoHeight: true,
-        pagination: '.swiper-pagination',
-        paginationClickable: true
+        autoplay: {
+          delay: 3000,
+          stopOnLastSlide: false,
+          disableOnInteraction: false
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        }
       }
     }
   }

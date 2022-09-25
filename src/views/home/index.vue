@@ -30,14 +30,13 @@ export default {
       banner: [],
       mall_nav: [],
       hot_nav: [],
-      products: [],
       images: require('@/assets/images/day.png'),
+      products: [],
       fechProductParams: {
         page: 1,
         page_size: 10,
         category_id: 1
-      },
-      flag: ''
+      }
     }
   },
   scrollBottom () {
