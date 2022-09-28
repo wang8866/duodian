@@ -37,6 +37,9 @@ new Vue({
   router,
   store,
   created () {
+    if (Object.keys(this.$store.state.user.address).length < 1) {
+      this.$router.push('/geolocation')
+    }
     this.$store.dispatch('user/getUserInfo')
   },
   render: h => h(App)

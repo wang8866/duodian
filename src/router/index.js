@@ -67,6 +67,20 @@ const router = new VueRouter({
       meta: {
         title: '登录'
       }
+    },
+    {
+      path: '/map',
+      component: () => import('@/views/map'),
+      meta: {
+        title: '地图'
+      }
+    },
+    {
+      path: '/geolocation',
+      component: () => import('@/views/geolocation'),
+      meta: {
+        title: '定位'
+      }
     }
   ]
 })

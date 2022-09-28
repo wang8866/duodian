@@ -1,15 +1,21 @@
 import { api } from '@/api'
+import storage from '@/utils/storage'
 
 const user = {
   namespaced: true,
   state: {
-    info: {}
+    info: {},
+    address: storage.getItem('address') || {}
   },
   getters: {
   },
   mutations: {
     SET_USERINFO (state, payload) {
       state.info = payload
+    },
+    SET_ADDERSS (state, payload) {
+      state.address = payload
+      storage.setItem('address', payload, 1000 * 60 * 60 * 3)
     }
   },
   actions: {

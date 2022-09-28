@@ -23,6 +23,11 @@ module.exports = defineConfig({
       }
     }
   },
+  configureWebpack: {
+    externals: {
+      AMap: 'AMap'
+    }
+  },
   devServer: {
     proxy: {
       '/api': {

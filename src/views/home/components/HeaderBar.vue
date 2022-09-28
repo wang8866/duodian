@@ -2,7 +2,7 @@
   <header class="header-bar">
     <a href="javascript:;">
       <i class="iconfont icon-dizhiguanli"></i>
-      <output>送至：赛格国际购物中心</output>
+      <output>送至：{{address.formattedAddress}}</output>
       <i class="iconfont icon-jiantouyou"></i>
     </a>
     <router-link
@@ -15,8 +15,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-  name: 'HeaderBar'
+  name: 'HeaderBar',
+  computed: {
+    ...mapState('user', ['address'])
+  }
 }
 </script>
 
@@ -32,6 +36,9 @@ export default {
       font-size: $font-size-xs;
       output {
         margin: 0 14px 0 7px;
+        @include ellipsis(1);
+        width: 55%;
+        display: inline-block;
       }
       i {
         font-size: $font-size-s;
