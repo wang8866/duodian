@@ -3,16 +3,9 @@
     <header>
       <h3>热门搜索</h3>
       <ul class="cont">
-        <li>华为手环</li>
-        <li>打印机色带</li>
-        <li>跑步机</li>
-        <li>天燃气灶双灶</li>
-        <li>风信子种球</li>
-        <li>斯诺克球杆</li>
-        <li>鳄鱼皮钱包</li>
-        <li>珊瑚绒床垫</li>
-        <li>演唱会望远镜</li>
-        <li>不粘锅煎锅</li>
+        <li v-for="(item, index) in list" :key="index">
+          {{item}}
+        </li>
       </ul>
     </header>
   </div>
@@ -20,7 +13,10 @@
 
 <script>
 export default {
-  name: 'HotSearch'
+  name: 'HotSearch',
+  props: {
+    list: Array
+  }
 }
 </script>
 

@@ -36,5 +36,16 @@ Vue.directive('throttle', throttle)
 new Vue({
   router,
   store,
+  data: {
+    userInfo: {}
+  },
+  created () {
+    const token = localStorage.getItem('token')
+    if (token) {
+      this.$api.user.info().then((res) => {
+        this.userInfo = res.data
+      })
+    }
+  },
   render: h => h(App)
 }).$mount('#app')

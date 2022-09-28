@@ -16,15 +16,15 @@
       >
       取消</a>
     </label>
-    <div class="search-tip-wrap" v-show="showTip">
+    <div class="search-tip-wrap" v-show="showTip" ref="tip">
       <div class="search-tip-contnet">
         <div
           v-for="(item, index) in tipList"
           :key="index"
-          @click="search(item.word)"
+          @click="search(item.name)"
          >
          <template v-if="!$scopedSlots.tip">
-          {{item.word}}
+          {{item.name}}
          </template>
           <slot name="tip" :item="item"></slot>
         </div>
@@ -39,7 +39,7 @@ export default {
   props: {
     value: String,
     clear: Boolean,
-    tipList: [Array, Object]
+    tipList: Array
   },
   data () {
     return {
@@ -63,6 +63,8 @@ export default {
     search (value) {
       this.val = value
       this.$emit('search', value)
+      this.$refs.tip.style.zIndex = 0
+      console.log(this.$refs.tip)
     }
   },
   mounted () {
@@ -79,7 +81,6 @@ export default {
       padding: 0 30px;
       box-sizing: border-box;
       position: relative;
-      z-index: 1;
       background: #fff;
       z-index: 5;
       i {
@@ -112,9 +113,10 @@ export default {
       background: #eee;
       z-index: 2;
       .search-tip-contnet {
-        @include wh (100%, auto);
+        @include wh (100%, 100%);
         background: #fff;
         padding-top: 88px;
+        overflow: auto;
       }
     }
   }

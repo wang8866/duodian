@@ -6,7 +6,8 @@
         <i class="iconfont icon-guanbi1"></i>
       </h3>
       <ul class="cont">
-       <li v-for="(item, index) in val" :key="index">{{item}}</li>
+       <li v-for="(item, index) in val" :key="index">{{item}}
+       </li>
       </ul>
     </header>
   </div>

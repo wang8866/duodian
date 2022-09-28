@@ -25,8 +25,22 @@ export default {
       @include wh (100%, 79px);
       line-height: 79px;
       .title {
-        font-size: 26px;
-        color: #333;
+        font-size: 30px;
+        color: #262626;
+        font-weight: bold;
+        padding-left: 14px;
+        position: relative;
+        z-index: 1;
+        &::before {
+          background-image: linear-gradient(180deg,#f5503a,#fad1cb);
+          content: "";
+          height: 30px;
+          left: 0;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 6px;
+        }
       }
     }
   }

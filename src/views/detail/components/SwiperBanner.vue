@@ -1,6 +1,7 @@
 <template>
   <swiper
     :options="swiperOption"
+    ref="mySwiper"
   >
     <!-- slides -->
     <swiper-slide
@@ -34,6 +35,11 @@ export default {
           clickable: true
         }
       }
+    }
+  },
+  computed: {
+    swiper () {
+      return this.$refs.mySwiper.swiper
     }
   }
 }

@@ -13,18 +13,18 @@ const debounce = {
     console.log(VNode.context)
     input = input.bind(VNode.context, el, binding.expression)
     el.addEventListener('input', input, false)
-    console.log(el, '指令')
+    // console.log(el, '指令')
   },
   update (el, binding) {
     el.value = binding.value
-    console.log('组件的 VNode 更新')
+    // console.log('组件的 VNode 更新')
   },
   // componentUpdated () {
   //   console.log('更新完成')
   // },
   unbind (el) {
     el.removeEventListener('input', input)
-    console.log('解绑')
+    // console.log('解绑')
   }
 }
 
