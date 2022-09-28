@@ -1,6 +1,6 @@
 import axios from '@/utils/axios'
 
-const api = {
+export const api = {
   home: {
     base: () => axios.get('/home')
   },

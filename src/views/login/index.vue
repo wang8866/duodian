@@ -58,9 +58,8 @@ export default {
       const callbackUrl = this.$route.query.callback || '/home'
       console.log(res)
       localStorage.setItem('token', res.token)
-      this.$api.user.info().then((res) => {
-        this.$root.userInfo = res.data
-        this.$router.push(callbackUrl)
+      this.$store.dispatch('user/getUserInfo').then(res => {
+        this.$router.replace(callbackUrl)
       })
     },
     async sendCode () {
