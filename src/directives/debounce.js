@@ -1,7 +1,7 @@
 import utils from '@/utils/utlis'
 
 let input = function (el, expression) {
-  console.log(this, expression)
+  // console.log(this, expression)
   this[expression] = el.value
 }
 

@@ -81,6 +81,13 @@ const router = new VueRouter({
       meta: {
         title: '定位'
       }
+    },
+    {
+      path: '/address',
+      component: () => import('@/views/address'),
+      meta: {
+        title: '选择地址'
+      }
     }
   ]
 })

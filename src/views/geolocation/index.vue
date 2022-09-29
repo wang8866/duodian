@@ -15,6 +15,8 @@ export default {
         formattedAddress: res.formattedAddress
       })
       this.$router.replace('/home')
+    }).catch(() => {
+      this.$router.replace('/address')
     })
   }
 }

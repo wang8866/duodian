@@ -9,8 +9,6 @@
         @keydown.enter="search(val)"
       />
       <a
-        v-if="clear"
-        v-show="val.length >= 1"
         @click="val=''"
         href="javascript:;"
       >
@@ -21,7 +19,7 @@
         <div
           v-for="(item, index) in tipList"
           :key="index"
-          @click="search(item.name)"
+          @click="search(item)"
          >
          <template v-if="!$scopedSlots.tip">
           {{item.name}}
@@ -61,8 +59,9 @@ export default {
   },
   methods: {
     search (value) {
-      this.val = value
+      // this.val = value
       this.$emit('search', value)
+      this.$refs.tip.style.display = 'none'
       this.$refs.tip.style.zIndex = 0
       console.log(this.$refs.tip)
     }
@@ -93,14 +92,21 @@ export default {
         @include wh (80%, 56px);
         outline: none;
         border: 0;
-        border-radius: 56px;
         padding: 0 32px 0 54px;
         box-sizing: border-box;
-        border: 1px solid #ff712b;
+        border: 1px solid #c8cccd;
+        border-radius: 0;
       }
       a {
         font-size: 28px;
         color: #111;
+        border-radius: 8px;
+        background-color: #c8cccd;
+        color: #fff;
+        width: 128px;
+        line-height: 62px;
+        height: 62px;
+        text-align: center;
       }
     }
     .search-tip-wrap {

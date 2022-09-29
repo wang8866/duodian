@@ -1,10 +1,13 @@
 <template>
   <header class="header-bar">
-    <a href="javascript:;">
+    <router-link
+      to="/address"
+      href="javascript:;"
+    >
       <i class="iconfont icon-dizhiguanli"></i>
       <output>送至：{{address.formattedAddress}}</output>
       <i class="iconfont icon-jiantouyou"></i>
-    </a>
+    </router-link>
     <router-link
       to="/search"
       href="javascript:;"
@@ -34,10 +37,13 @@ export default {
     a {
       color: $color-grey;
       font-size: $font-size-xs;
+      &:nth-child(2) {
+        flex-shrink: 0;
+      }
       output {
         margin: 0 14px 0 7px;
         @include ellipsis(1);
-        width: 55%;
+        max-width: 300px;
         display: inline-block;
       }
       i {

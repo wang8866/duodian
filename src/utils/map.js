@@ -3,7 +3,7 @@ import AMap from 'AMap'
 const geolocation = () => {
   return new Promise((resolve, reject) => {
     AMap.plugin('AMap.Geolocation', function () {
-      var geolocation = new AMap.Geolocation({
+      const geolocation = new AMap.Geolocation({
         // 是否使用高精度定位，默认：true
         enableHighAccuracy: true,
         GeoLocationFirst: true,
