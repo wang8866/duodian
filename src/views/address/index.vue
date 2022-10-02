@@ -76,14 +76,14 @@ export default {
       console.log(item)
     },
     geolocation () {
+      this.$loading.show()
       map.geolocation().then(res => {
         this.show = true
         console.log(res)
         this.pois = res.pois
-        // this.$store.commit('user/SET_ADDERSS', {
-        //   ...res.addressComponent,
-        //   formattedAddress: res.formattedAddress
-        // })
+        this.$loading.hide()
+      }).catch(() => {
+        this.$message.error('定位失败')
       })
     }
   }

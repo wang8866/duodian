@@ -18,6 +18,7 @@ import TagsList from '@/components/TagsList'
 import CardList from '@/components/CardList'
 import SearchFor from '@/components/SearchFor'
 import PopupMenu from '@/components/PopupMenu'
+import Loading from '@/components/LoadingImage/index.js'
 
 import debounce from './directives/debounce'
 import throttle from './directives/throttle'
@@ -25,6 +26,7 @@ import throttle from './directives/throttle'
 Vue.config.productionTip = false
 Vue.use(api)
 Vue.use(VueAwesomeSwiper)
+Vue.use(Loading)
 
 Vue.component('TabBar', TabBar)
 Vue.component('ProductList', ProductList)
