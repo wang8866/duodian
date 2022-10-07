@@ -1,5 +1,5 @@
 <template>
-  <div class="address">
+  <div class="address-page">
     <search-for
       v-model="searchKey"
       clear
@@ -24,6 +24,7 @@
         <p>{{item.address}}</p>
       </li>
     </popup-menu>
+    <router-link to="/create/address" tag="button" class="add"><i class="iconfont icon-jiajianzujianjiahao"></i>新增地址</router-link>
   </div>
 </template>
 
@@ -91,7 +92,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.address {
+.address-page {
   @include wh (100vw, 100vh);
   background-color: #f6f6f6;
   .tips-item {
@@ -126,6 +127,20 @@ export default {
       font-size: 28px;
       color: grey;
       margin-left: 10px;
+    }
+  }
+  .add {
+    @include wh (100%, 88px);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    border: 0;
+    font-size: 28px;
+    color: #ff712b;
+    i {
+      font-size: 32px;
+      margin-right: 14px;
     }
   }
 }

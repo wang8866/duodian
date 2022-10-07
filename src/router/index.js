@@ -88,6 +88,13 @@ const router = new VueRouter({
       meta: {
         title: '选择地址'
       }
+    },
+    {
+      path: '/create/address',
+      component: () => import('@/views/editAddress'),
+      meta: {
+        title: '新增地址'
+      }
     }
   ]
 })
