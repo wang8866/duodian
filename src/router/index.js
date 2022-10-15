@@ -93,6 +93,7 @@ const router = new VueRouter({
       path: '/create/address',
       component: () => import('@/views/editAddress'),
       meta: {
+        isAuthenticated: true,
         title: '新增地址'
       }
     }

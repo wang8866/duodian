@@ -1,17 +1,26 @@
 <template>
   <div class="edit-address">
-    <field-form :model="formDate" :rules="rules" ref="form">
+    <field-form :model="formData" :rules="rules" ref="form">
       <field-item label="联系人">
-        <field-input type="money" v-model="formDate.name" placeholder="请输入联系人" />
+        <field-input type="money" v-model="formData.name" placeholder="请输入联系人姓名" />
       </field-item>
       <field-item label="手机号">
-        <field-input type="phone" v-model="formDate.phone" placeholder="请输入手机号" />
+        <field-input type="phone" v-model="formData.phone" placeholder="请输入手机号" />
       </field-item>
       <field-item label="地址">
-        <field-input />
+        <field-input
+          v-model="formData.location.name"
+          placeholder="请选择联系人地址"
+          readonly
+          @click.native="$router.push('/map')"
+        >
+          <template v-slot:last>
+            <i class="iconfont icon-jiantouyou"></i>
+          </template>
+        </field-input>
       </field-item>
-      <field-item label="详细地址" v-model="formDate.address" >
-        <field-input placeholder="请输入详细地址" />
+      <field-item label="详细地址">
+        <field-input v-model="formData.address" placeholder="请输入详细地址" />
       </field-item>
     </field-form>
     <button @click="submit">完成</button>
@@ -19,15 +28,16 @@
 </template>
 
 <script>
+import storage from '@/utils/storage.js'
 export default {
   name: 'edit-address',
   data () {
     return {
-      formDate: {
+      formData: {
         name: '',
         phone: '',
         address: '',
-        mo: ''
+        location: ''
       },
       rules: {
         name: [
@@ -44,12 +54,44 @@ export default {
       }
     }
   },
+  created () {
+    const formData = storage.getItem('addressFormData')
+    if (formData) {
+      this.formData = formData
+    }
+    this.$root.$on('changeLoation', (location) => {
+      this.formData.location = location
+    })
+  },
   methods: {
     submit () {
       this.$refs.form.validate().then(() => {
-        console.log('提交')
+        // console.log('提交')
+        this.$api.address.create(this.formData).then(res => {
+          // console.log(res)
+          this.$message_word.success('添加成功')
+          this.$router.back()
+          this.$store.dispatch('user/getUserAddress')
+        })
+      }).catch((e) => {
+        this.$message_word.error(e)
+        console.log(e)
       })
     }
+  },
+  beforeRouteLeave (to, form, next) {
+    if (to.path !== '/map') {
+      this.formData = {
+        name: '',
+        phone: '',
+        address: '',
+        location: {}
+      }
+      storage.removeItem('addressFormData')
+    } else {
+      storage.setItem('addressFormData', this.formData)
+    }
+    next()
   }
 }
 </script>
@@ -70,5 +112,4 @@ export default {
     color: #ff712b;
   }
 }
-
 </style>

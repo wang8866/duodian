@@ -14,6 +14,11 @@ export const api = {
     login: (parmas) => axios.post('/user/login', parmas),
     sendCode: (parmas) => axios.get('/user/sendMessageCode', parmas),
     info: () => axios.get('/user/info')
+  },
+  address: {
+    create: (parmas) => axios.post('/address', parmas),
+    list: () => axios.get('/address'),
+    update: (id, parmas) => axios.put('/address/' + id, parmas)
   }
 }
 

@@ -25,7 +25,8 @@ module.exports = defineConfig({
   },
   configureWebpack: {
     externals: {
-      AMap: 'AMap'
+      AMap: 'AMap',
+      AMapUI: 'AMapUI'
     }
   },
   devServer: {

@@ -24,6 +24,23 @@
         <p>{{item.address}}</p>
       </li>
     </popup-menu>
+    <div class="hostory">
+      <h2 class="title">历史地址</h2>
+      <div class="hostory-list">
+        <div v-for="(item, index) in userAddress" :key="index" class="list">
+          <input
+            type="checkbox"
+            :checked="item.isDefault == 1"
+            @change="selectAddress($event, item)"
+          />
+          <div class="text">
+            <h3>{{item.name}}</h3>
+            <p>{{item.phone}}</p>
+            <p>{{item.address}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
     <router-link to="/create/address" tag="button" class="add"><i class="iconfont icon-jiajianzujianjiahao"></i>新增地址</router-link>
   </div>
 </template>
@@ -31,6 +48,7 @@
 <script>
 import AMap from 'AMap'
 import map from '@/utils/map'
+import { mapState } from 'vuex'
 
 export default {
   name: 'address-index',
@@ -41,6 +59,9 @@ export default {
       pois: [],
       show: false
     }
+  },
+  computed: {
+    ...mapState('user', ['userAddress'])
   },
   watch: {
     searchKey () {
@@ -86,6 +107,14 @@ export default {
       }).catch(() => {
         this.$message.error('定位失败')
       })
+    },
+    selectAddress (e, item) {
+      this.$api.address.update(item.id, {
+        isDefault: e.target.checked ? '1' : '0'
+      }).then(() => {
+        this.$store.dispatch('user/getUserAddress')
+      })
+      console.log(e.target.checked, item)
     }
   }
 }
@@ -141,6 +170,36 @@ export default {
     i {
       font-size: 32px;
       margin-right: 14px;
+    }
+  }
+  .hostory{
+    padding-bottom: 88px;
+    h2 {
+      font-size: 24px;
+      margin: 41px 21px 20px;
+    }
+    .hostory-list {
+      background: #fff;
+      .list {
+        display: flex;
+        border-bottom: 1px solid #eee;
+        padding: 20px 10px;
+        box-sizing: border-box;
+        .text {
+          margin-left: 15px;
+          h3 {
+            font-size: 35px;
+            color: #333;
+          }
+          p {
+            font-size: 30px;
+            color: #666;
+            &:nth-child(2) {
+              padding: 10px 0;
+            }
+          }
+        }
+      }
     }
   }
 }
