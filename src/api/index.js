@@ -19,6 +19,13 @@ export const api = {
     create: (parmas) => axios.post('/address', parmas),
     list: () => axios.get('/address'),
     update: (id, parmas) => axios.put('/address/' + id, parmas)
+  },
+  car: {
+    add: (parmas) => axios.post('/car', parmas),
+    list: () => axios.get('/car'),
+    update: (id, parmas) => axios.put('/car/' + id, parmas),
+    updateAll: (parmas) => axios.put('/car/', parmas),
+    delete: (id) => axios.delete('/car/' + id)
   }
 }
 

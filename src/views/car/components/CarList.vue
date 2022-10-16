@@ -1,11 +1,15 @@
 <template>
   <div class="product-list">
-    <router-link
+    <dl
       v-for="(item,index) in list"
       :key="index"
-      tag="dl"
-      :to="`/detail/${item.id}`"
     >
+      <input
+        class="checkbox"
+        type="checkbox"
+        :checked="item.isActive === '1'"
+        @change="activeChange($event, item)"
+      >
       <dt>
         <img :src="item.img" alt="">
       </dt>
@@ -20,20 +24,19 @@
             <span>￥<b>{{item.price | formatPrice}}</b></span>
             <s>￥{{item.price | formatPrice}}</s>
           </p>
-          <add-car-button class="car" :product="item">
-            <img :src="images" alt="" class="icon">
-          </add-car-button>
+          <number-list v-model="item.num" @change="numChange(item)" />
         </footer>
       </dd>
-    </router-link>
+    </dl>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'ProductList',
-  props: {
-    list: Array
+  computed: {
+    ...mapState('car', ['list'])
   },
   data () {
     return {
@@ -44,18 +47,47 @@ export default {
     formatPrice (price) {
       return price / 100
     }
+  },
+  methods: {
+    numChange (item) {
+      if (item.num <= 0) {
+        if (confirm('确定要删除该商品吗？')) {
+          this.$api.car.delete(item.id)
+          this.$store.dispatch('car/getCarList')
+        } else {
+          this.$nextTick(() => {
+            item.num = 1
+          })
+        }
+      } else {
+        this.$api.car.update(item.id, {
+          num: item.num
+        })
+      }
+    },
+    activeChange (e, item) {
+      this.$api.car.update(item.id, {
+        isActive: e.target.checked ? '1' : '0'
+      }).then(() => {
+        this.$store.dispatch('car/getCarList')
+      })
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .product-list {
+  padding-bottom: 200px;
   dl {
     display: flex;
     padding: 30px;
     box-sizing: border-box;
     background: #fff;
     @include border-1px(bottom, $color-border-line);
+    .checkbox {
+      margin-right: 15px;
+    }
     dt {
       @include wh (240px,240px);
       img {

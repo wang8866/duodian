@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page-home">
     <header-bar/>
     <swiper-banner :list="banner"/>
     <mall-nav :nav="mall_nav" />
@@ -84,6 +84,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.page-home {
+  background: #fff;
+}
 .tabs {
   position: sticky;
   top: 0;

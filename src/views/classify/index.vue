@@ -93,6 +93,7 @@ export default {
 
 <style lang="scss" scoped>
 .classify-page {
+  background: #fff;
   .content {
     @include flex(row);
     height: 100%;
@@ -194,12 +195,12 @@ export default {
             p {
               font-size: 18px;
             }
-            .car {
+            .add-car-button {
               @include wh(45px, 45px);
               display: flex;
               justify-content: space-between;
               img {
-                @include wh(24px, 24px);
+                @include wh(22px, 22px);
                 margin: 0 auto;
               }
             }

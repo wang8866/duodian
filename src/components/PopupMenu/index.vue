@@ -10,9 +10,14 @@
       >
         <div class="popup-box" v-show="visible" @click.stop>
           <header>
-            <h2>{{title}}</h2>
+            <h2>
+              {{title}}
+            </h2>
             <a @click="close" href="javascript:;">取消</a>
           </header>
+          <div class="list">
+            <slot name="title"></slot>
+          </div>
           <div class="contnet">
             <slot></slot>
           </div>
@@ -46,14 +51,15 @@ export default {
     right: 0;
     left: 0;
     background: rgba(0,0,0,0.2);
-    z-index: 10;
+    z-index: 100;
     .popup-box {
       @include wh (100%, auto);
       position: absolute;
       bottom: 0;
       background: #f6f6f6;
       header {
-        @include wh (100%, 88px);
+        width: 100%;
+        min-height: 88px;
         @include flex (row, center, space-between);
         border-bottom: solid 0.01rem #f0f0f0;
         font-size: 28px;

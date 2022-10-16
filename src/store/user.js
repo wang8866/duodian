@@ -27,6 +27,7 @@ const user = {
       if (token) {
         api.user.info().then((res) => {
           dispatch('getUserAddress')
+          dispatch('car/getCarList', null, { root: true })
           commit('SET_USERINFO', res.data)
         })
       }

@@ -10,6 +10,7 @@
         :to="item.path"
         active-class="active"
       >
+        <span class="num" v-if="item.path == '/car'">{{count}}</span>
         <img :src="item.icon" alt="" class="icon" />
         <img :src="item.select_icon" alt="" class="select_icon" />
         <span>{{ item.text }}</span>
@@ -19,6 +20,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'tab-main',
   data () {
@@ -50,6 +52,9 @@ export default {
         }
       ]
     }
+  },
+  computed: {
+    ...mapGetters('car', ['count'])
   }
 }
 </script>
@@ -57,7 +62,7 @@ export default {
 <style lang="scss" scoped>
 .page {
   min-height: 100vh;
-  // background: #f6f6f6;
+  background: #f6f6f6;
   margin-bottom: 100px;
   .foot-nav {
     position: fixed;
@@ -67,10 +72,15 @@ export default {
     @include flex(row, center, center);
     background: #fff;
     z-index: 1;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     a {
       flex: 1;
       @include flex(column, center, center);
       padding: 14px 0 6px;
+      .num {
+        color: $red;
+        font-weight: bold;
+      }
       span {
         font-size: $font-size-xs;
         color: $grey;
