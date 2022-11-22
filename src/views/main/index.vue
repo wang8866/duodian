@@ -100,7 +100,6 @@ export default {
         }
         .select_icon {
           display: block;
-          color: #000;
         }
       }
     }
