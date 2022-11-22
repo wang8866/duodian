@@ -104,6 +104,7 @@ export default {
         ::v-deep .car {
           .icon {
             @include wh (28px, 28px);
+            color: #000;
           }
         }
       }
